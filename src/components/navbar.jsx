@@ -41,7 +41,7 @@ export function Navbar() {
           <Icon name="spark" size={25}></Icon>
           {expandido && <span className="btn-text">Mis historias</span>}
         </NavLink>
-        <NavLink to="/guardados" className="nav-item">
+        <NavLink to="/saves" className="nav-item">
           <Icon name="bookmark"></Icon>{" "}
           {expandido && <span className="btn-text">Guardados</span>}
         </NavLink>
@@ -54,7 +54,7 @@ export function Navbar() {
           {expandido && <span className="btn-text">Juegos para recordar</span>}
         </NavLink>
         <NavLink to="/help" className="nav-item">
-          <Icon name="search" size={25}></Icon>
+          <Icon name="help" size={25}></Icon>
           {expandido && <span className="btn-text">¿Necesitas ayuda?</span>}
         </NavLink>
       </div>

@@ -20,8 +20,12 @@ function App() {
       <div className="app-layout">
         <Navbar />
 
+        <div className="main-content">
+          <Header />
+        </div>
+
         {/* El main contendrá las rutas y ocupará el resto de la pantalla */}
-        <main className="main-content">
+        <main className="routes-container">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/favorites" element={<Favorites />} />

@@ -8,9 +8,13 @@
 .app-layout {
   min-height: 100vh;
   /* Deja un margen izquierdo igual al ancho del menú contraído para que no tape el texto principal */
-  padding-left: 80px; 
+  
+
+  display: flex;
+  width: 100%;
 }
 
+/* #region navbar*/
 /* --- NAVBAR BASE (CONTRAÍDO) --- */
 .navbar {
   position: fixed;       /* Flota sobre la página */
@@ -29,6 +33,10 @@
 .navbar.expandido {
   width: 250px;          /* Nuevo ancho al hacer clic */
   box-shadow: 4px 0 15px rgba(0, 0, 0, 0.5); /* Sombra para resaltar que está encima */
+}
+.navbar.expandido ~ .main-content {
+  width: calc(100% - 250px);
+  margin-left: 250px !important;
 }
 
 /* --- ESTILOS INTERNOS DEL MENÚ --- */
@@ -181,3 +189,176 @@
 .nav-links a:hover {
   background-color: #333;
 }
+/* #endregion */
+
+/* #region header*/
+/* Layout Principal del Header */
+.main-content {
+  margin-left: 60px !important; /* Deja espacio exacto para el navbar cerrado */
+  width: calc(100% - 60px) !important; /* Ocupa exactamente el resto de la pantalla */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+header {
+  width: 100% !important;
+  display: block; 
+  margin: 0;
+  padding: 0;
+}
+
+
+
+
+.header-actions {
+  width: 100% !important;
+  box-sizing: border-box !important;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 40px 50px;
+  background-color: #f4f4f2;
+  border-bottom: 1px solid #d4d4d4; /* Aquí está tu línea divisoria inferior */
+}
+
+/* --- SECCIÓN IZQUIERDA: TEXTOS --- */
+.header-description {
+  flex: 1 1 auto !important;
+  max-width: none !important;
+  margin-right: 40px !important;
+}
+
+/* Subtítulo con la línea horizontal */
+.subtitle-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.subtitle-line {
+  width: 30px;
+  height: 2px;
+  background-color: #8c8c8c;
+  display: inline-block;
+}
+
+.header-subtitle {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: #6b6b6b;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+/* Título Principal (Serif / DM Serif Display) */
+.header-description h1 {
+  font-family: var(--font-sans);
+  font-weight: 900;   
+  color: #121212;
+  -webkit-text-stroke: 1px #121212;
+
+  font-size: 2.8rem !important; /* Ajusta el tamaño para que quepa holgado */
+  white-space: nowrap !important; /* Asegura salto de línea natural */
+  margin: 0 0 12px 0 !important;
+  line-height: 1.1 !important;
+  display: block !important;
+}
+
+/* Texto Descriptivo */
+.header-text {
+  font-family: var(--font-sans);
+  font-size: 15px;
+  color: #666666;
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* --- SECCIÓN DERECHA: CONTROLES --- */
+.header-placeholder {
+  display: flex !important;
+  align-items: center !important;
+  gap: 16px !important;
+  flex-shrink: 0 !important; /* Protege el buscador y el botón para que no se achiquen */
+}
+
+/* Caja de Búsqueda Redondeada */
+.search-box {
+  display: flex;
+  align-items: center;
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 30px;
+  padding: 10px 18px;
+  width: 240px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+}
+
+.search-icon {
+  color: #888888;
+  margin-right: 10px;
+  flex-shrink: 0;
+}
+
+.search-box input {
+  border: none;
+  outline: none;
+  background: transparent;
+  width: 100%;
+  font-size: 14px;
+  color: #333333;
+  font-family: var(--font-sans);
+}
+
+.search-box input::placeholder {
+  color: #9e9e9e;
+}
+
+/* Botón Añadir Historia (Negro con círculo amarillo) */
+.add-btn {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background-color: #1a1a1a;
+  color: #ffffff;
+  border: none;
+  border-radius: 35px;
+  padding: 6px 20px 6px 8px; /* Padding ajustado para integrar el círculo */
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.add-btn:hover {
+  background-color: #2a2a2a;
+  transform: translateY(-1px);
+}
+
+/* Círculo Amarillo del Ícono + */
+.plus-icon-bg {
+  width: 38px;
+  height: 38px;
+  background-color: #ffd836; /* Mismo amarillo de tu menú activo */
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #000000;
+  flex-shrink: 0;
+}
+
+/* Texto del Botón en 2 líneas */
+.btn-text-content {
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.1;
+  text-align: left;
+}
+
+
+
+/* #endregion */
