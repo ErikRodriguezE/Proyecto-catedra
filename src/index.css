@@ -198,7 +198,7 @@
   width: calc(100% - 60px) !important; /* Ocupa exactamente el resto de la pantalla */
   min-height: 100vh;
   display: flex;
-  flex-direction: column;
+  flex-direction: column !important;
   box-sizing: border-box;
 }
 
@@ -362,3 +362,506 @@ header {
 
 
 /* #endregion */
+
+
+/* #region help*/
+
+/* --- CONTENEDOR PRINCIPAL DE HELP --- */
+.help-page-container {
+  display: flex;
+  gap: 60px;
+  padding: 50px;
+  width: 100%;
+  box-sizing: border-box;
+  align-items: flex-start; /* Evita que la tarjeta amarilla se estire verticalmente */
+  background-color: #f9f9f9; /* Fondo gris muy claro para contrastar con lo amarillo */
+  min-height: 100vh;
+}
+
+/* --- COLUMNA IZQUIERDA: FAQ --- */
+.faq-section {
+  flex: 1; /* Toma todo el espacio disponible sobrante */
+}
+
+.faq-section-title {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 700;
+  color: #7a7a7a;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.faq-list {
+  border-top: 1px solid #e5e5e5;
+}
+
+.faq-item {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.faq-question-btn {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: none;
+  border: none;
+  padding: 24px 0;
+  cursor: pointer;
+  text-align: left;
+}
+
+.faq-question-btn h3 {
+  font-family: var(--font-sans);
+  font-size: 18px;
+  font-weight: 600;
+  color: #121212;
+  margin: 0;
+}
+
+.faq-icon-wrapper {
+  background-color: #eaeaea;
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #333;
+  flex-shrink: 0;
+  transition: background-color 0.2s;
+}
+
+.faq-question-btn:hover .faq-icon-wrapper {
+  background-color: #d4d4d4;
+}
+
+.faq-answer {
+  padding-bottom: 30px;
+  padding-right: 40px;
+}
+
+.faq-answer p {
+  font-family: var(--font-sans);
+  font-size: 15px;
+  color: #555;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* --- COLUMNA DERECHA: TARJETA DE ALERTA --- */
+.alert-card {
+  width: 360px; 
+  background-color: #fce268; 
+  padding: 40px;
+  box-sizing: border-box;
+  flex-shrink: 0;
+  
+  /* NUEVO: Efecto de nota adhesiva */
+  transform: rotate(2deg); /* Rota la tarjeta ligeramente en diagonal */
+  box-shadow: 4px 6px 15px rgba(0, 0, 0, 0.08); /* Sombra para que parezca despegada del fondo */
+  border-radius: 2px 2px 15px 2px; /* Curva sutilmente la esquina inferior derecha para simular papel */
+}
+
+.alert-icon {
+  margin-bottom: 20px;
+}
+
+.alert-title {
+  font-family: var(--font-serif);
+  font-weight: 900;
+  font-size: 2.2rem;
+  color: #121212;
+  line-height: 1.1;
+  margin: 0 0 20px 0;
+  letter-spacing: -0.5px;
+}
+
+.alert-text {
+  font-family: var(--font-sans);
+  font-size: 15px;
+  color: #333;
+  line-height: 1.5;
+  margin: 0 0 30px 0;
+}
+
+.alert-btn {
+  display: inline-block;
+  background-color: #121212;
+  color: #ffffff;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 14px;
+  text-decoration: none;
+  padding: 14px 24px;
+  border-radius: 30px; /* Botón en forma de píldora */
+  margin-bottom: 20px;
+  transition: background-color 0.2s;
+}
+
+.alert-btn:hover {
+  background-color: #333;
+}
+
+.alert-footer {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  color: #666;
+  line-height: 1.4;
+  margin: 0;
+}
+
+
+/* #endregion */
+
+
+/* #region games*/
+/* ================= MENÚ DE JUEGOS ================= */
+.games-dashboard {
+  padding: 40px 50px;
+  background-color: #f9f9f9;
+  min-height: 100vh;
+  /* Fondo estilo cuadrícula sutil */
+  background-image: 
+    linear-gradient(to right, #e8e8e8 1px, transparent 1px),
+    linear-gradient(to bottom, #e8e8e8 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.games-intro-box p{
+  font-family: var(--font-sans);
+}
+
+.games-intro-box {
+  background: white;
+  padding: 20px 30px;
+  border-radius: 12px;
+  border: 1px solid #e0e0e0;
+  max-width: 800px;
+  margin-bottom: 40px;
+}
+
+.games-intro-box p {
+  font-family: var(--font-sans);
+  font-size: 15px;
+  color: #555;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.games-grid {
+  display: grid;
+  /* Esto crea 3 columnas simétricas que ocupan todo el ancho disponible */
+  grid-template-columns: repeat(3, 1fr); 
+  gap: 30px;
+  width: 100%;
+}
+
+/* Tarjetas */
+.game-card {
+  position: relative;
+  width: 100%; /* Ahora la tarjeta se adapta a la columna del grid */
+  padding: 40px 30px;
+  box-shadow: 2px 5px 15px rgba(0,0,0,0.05);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  box-sizing: border-box;
+  transition: all 0.3s ease;
+}
+
+.card-yellow { background-color: #fee376; }
+.card-pink { background-color: #ffcdd4; }
+.card-green { background-color: #9cf3cd; }
+
+.tape {
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 25px;
+  background-color: rgba(255, 255, 255, 0.6);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  transform: translateX(-50%) rotate(-2deg);
+}
+
+.card-category, .game-category {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: #333;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+}
+.in-card-game {
+  font-family: var(--font-sans);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  animation: fadeIn 0.3s ease-in-out;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.close-game-btn {
+  background: none;
+  border: none;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 13px;
+  color: #121212;
+  padding: 0;
+  margin-bottom: 20px;
+  cursor: pointer;
+  text-decoration: underline;
+  align-self: flex-start;
+}
+.step-counter {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  color: #555;
+  margin-bottom: 10px;
+}
+
+.in-card-question {
+  font-family: var(--font-sans);
+  font-size: 1.6rem;
+  font-weight: 900;
+  color: #121212;
+  line-height: 1.2;
+  margin-bottom: 20px;
+}
+
+.in-card-clue {
+  font-family: var(--font-sans);
+  font-size: 15px;
+  color: #333;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+.in-card-options {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 10px;
+}
+
+.in-card-btn {
+  background-color: transparent;
+  border: 1px solid rgba(0,0,0,0.2);
+  border-radius: 12px;
+  padding: 12px 18px;
+  text-align: left;
+  font-family: var(--font-sans);
+  font-size: 15px;
+  font-weight: 600;
+  color: #121212;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.in-card-btn.flex-btn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.in-card-btn:hover {
+  background-color: rgba(0,0,0,0.08);
+}
+
+.in-card-image-container {
+  height: 120px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+.in-card-img {
+  max-height: 100%;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+.in-card-result {
+  border-top: 1px solid rgba(0,0,0,0.1);
+  margin-top: 20px;
+  padding-top: 20px;
+}
+
+.semilla-quote {
+  font-family: var(--font-sans);
+  font-size: 1.4rem;
+  font-weight: 900;
+  color: #121212;
+  line-height: 1.2;
+  margin-bottom: 15px;
+}
+
+.semilla-footer {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  color: #444;
+  margin-bottom: 20px;
+}
+
+.card-title {
+  font-family: var(--font-sans);
+  font-size: 2rem;
+  font-weight: 900;
+  color: #121212;
+  margin-bottom: 20px;
+  line-height: 1.1;
+}
+
+.card-desc {
+  font-family: var(--font-sans);
+  font-size: 15px;
+  color: #444;
+  line-height: 1.5;
+  margin-bottom: 30px;
+  flex-grow: 1;
+}
+
+.jugar-btn, .escribir-btn {
+  background-color: #121212;
+  color: white;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  padding: 12px 28px;
+  border-radius: 30px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+}
+
+/* ================= ESTILOS DEL JUEGO DENTRO DE LA CARTA ================= */
+.in-card-game {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.close-game-btn {
+  background: none;
+  border: none;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 13px;
+  color: #121212;
+  padding: 0;
+  margin-bottom: 20px;
+  cursor: pointer;
+  text-decoration: underline;
+  align-self: flex-start;
+}
+
+.step-counter {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  color: #555;
+  margin-bottom: 10px;
+}
+
+.in-card-question {
+  font-family: var(--font-sans);
+  font-size: 1.6rem;
+  font-weight: 900;
+  color: #121212;
+  line-height: 1.2;
+  margin-bottom: 20px;
+}
+
+.in-card-clue {
+  font-family: var(--font-sans);
+  font-size: 15px;
+  color: #333;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+.in-card-options {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 10px;
+}
+
+.in-card-btn {
+  background-color: transparent;
+  border: 1px solid rgba(0,0,0,0.2);
+  border-radius: 12px;
+  padding: 12px 18px;
+  text-align: left;
+  font-family: var(--font-sans);
+  font-size: 15px;
+  font-weight: 600;
+  color: #121212;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.in-card-btn.flex-btn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.in-card-btn:hover {
+  background-color: rgba(0,0,0,0.08);
+}
+
+.in-card-image-container {
+  height: 120px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+.in-card-img {
+  max-height: 100%;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+.in-card-result {
+  border-top: 1px solid rgba(0,0,0,0.1);
+  margin-top: 20px;
+  padding-top: 20px;
+}
+
+.semilla-quote {
+  font-family: var(--font-sans);
+  font-size: 1.4rem;
+  font-weight: 900;
+  color: #121212;
+  line-height: 1.2;
+  margin-bottom: 15px;
+}
+
+.semilla-footer {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  color: #444;
+  margin-bottom: 20px;
+}
+
+/* #endregion */
+

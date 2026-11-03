@@ -48,7 +48,7 @@ html, body {
   width: 100%; /* Permite que llegue hasta el borde derecho */
   margin-left: 60px; /* Deja el espacio exacto para el navbar fijo */
   display: flex;
-  flex-direction: column;
+  flex-direction: column !important;
   box-sizing: border-box;
 }
 

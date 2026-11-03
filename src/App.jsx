@@ -22,19 +22,19 @@ function App() {
 
         <div className="main-content">
           <Header />
-        </div>
 
-        {/* El main contendrá las rutas y ocupará el resto de la pantalla */}
-        <main className="routes-container">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/favorites" element={<Favorites />} />
-            <Route path="/games" element={<Games />} />
-            <Route path="/help" element={<Help />} />
-            <Route path="/myHistories" element={<MyHistories />} />
-            <Route path="/saves" element={<Saves />} />
-          </Routes>
-        </main>
+          {/* El main contendrá las rutas y ocupará el resto de la pantalla */}
+          <main className="routes-container">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/favorites" element={<Favorites />} />
+              <Route path="/games" element={<Games />} />
+              <Route path="/help" element={<Help />} />
+              <Route path="/myHistories" element={<MyHistories />} />
+              <Route path="/saves" element={<Saves />} />
+            </Routes>
+          </main>
+        </div>
       </div>
     </div>
   );
