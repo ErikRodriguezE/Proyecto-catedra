@@ -2,15 +2,17 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 
 export function Games() {
-  const [activeGame, setActiveGame] = useState(null); // null, 'trivia', 'sombra', 'semillas'
+  const [activeGame, setActiveGame] = useState(null);
 
   // --- ESTADOS PARA TRIVIA ---
   const [triviaIndex, setTriviaIndex] = useState(0);
   const [triviaFinished, setTriviaFinished] = useState(false);
+  const [selectedTriviaOption, setSelectedTriviaOption] = useState(null); // Nuevo estado
 
   // --- ESTADOS PARA SOMBRAS ---
   const [sombraIndex, setSombraIndex] = useState(0);
   const [sombraFinished, setSombraFinished] = useState(false);
+  const [selectedSombraOption, setSelectedSombraOption] = useState(null); // Nuevo estado
 
   // --- ESTADO PARA SEMILLAS ---
   const [selectedSeed, setSelectedSeed] = useState(null);
@@ -78,24 +80,37 @@ export function Games() {
   };
 
   // ================= FUNCIONES =================
-  const handleTriviaAnswer = () => {
+
+  // Guardamos la respuesta seleccionada sin pasar a la siguiente
+  const handleTriviaAnswer = (index) => {
+    if (selectedTriviaOption === null) setSelectedTriviaOption(index);
+  };
+
+  const handleTriviaContinue = () => {
     if (triviaIndex < triviaQuestions.length - 1) {
       setTriviaIndex(triviaIndex + 1);
     } else {
       setTriviaFinished(true);
     }
+    setSelectedTriviaOption(null); // Reseteamos la selección para la siguiente pregunta
   };
 
-  const handleSombraAnswer = () => {
+  // Guardamos la sombra seleccionada sin pasar a la siguiente
+  const handleSombraAnswer = (index) => {
+    if (selectedSombraOption === null) setSelectedSombraOption(index);
+  };
+
+  const handleSombraContinue = () => {
     if (sombraIndex < sombraItems.length - 1) {
       setSombraIndex(sombraIndex + 1);
     } else {
       setSombraFinished(true);
     }
+    setSelectedSombraOption(null); // Reseteamos la selección para la siguiente pregunta
   };
 
   const startGame = (gameName) => {
-    resetGames(); // Resetea antes de abrir para empezar limpio
+    resetGames();
     setActiveGame(gameName);
   };
 
@@ -103,8 +118,10 @@ export function Games() {
     setActiveGame(null);
     setTriviaIndex(0);
     setTriviaFinished(false);
+    setSelectedTriviaOption(null);
     setSombraIndex(0);
     setSombraFinished(false);
+    setSelectedSombraOption(null);
     setSelectedSeed(null);
   };
 
@@ -118,7 +135,6 @@ export function Games() {
         </p>
       </div>
 
-      {/* El grid ahora se encargará de repartir el espacio equitativamente */}
       <div className="games-grid">
         {/* ================= TARJETA 1: TRIVIA ================= */}
         <div className="game-card card-yellow">
@@ -151,16 +167,40 @@ export function Games() {
                     {triviaQuestions[triviaIndex].question}
                   </h3>
                   <div className="in-card-options">
-                    {triviaQuestions[triviaIndex].options.map((opt, i) => (
-                      <button
-                        key={i}
-                        className="in-card-btn"
-                        onClick={handleTriviaAnswer}
-                      >
-                        {opt}
-                      </button>
-                    ))}
+                    {triviaQuestions[triviaIndex].options.map((opt, i) => {
+                      // Lógica para asignar las clases de correcto/incorrecto
+                      let btnClass = "in-card-btn";
+                      if (selectedTriviaOption !== null) {
+                        if (i === triviaQuestions[triviaIndex].correct)
+                          btnClass += " correct-answer";
+                        else if (i === selectedTriviaOption)
+                          btnClass += " wrong-answer";
+                      }
+
+                      return (
+                        <button
+                          key={i}
+                          className={btnClass}
+                          onClick={() => handleTriviaAnswer(i)}
+                          disabled={selectedTriviaOption !== null} // Deshabilita botones al responder
+                        >
+                          {opt}
+                        </button>
+                      );
+                    })}
                   </div>
+
+                  {/* Botón continuar centrado */}
+                  {selectedTriviaOption !== null && (
+                    <div className="continue-container">
+                      <button
+                        className="jugar-btn continue-btn"
+                        onClick={handleTriviaContinue}
+                      >
+                        Continuar
+                      </button>
+                    </div>
+                  )}
                 </>
               ) : (
                 <>
@@ -215,16 +255,40 @@ export function Games() {
                     {sombraItems[sombraIndex].clue}
                   </p>
                   <div className="in-card-options">
-                    {sombraItems[sombraIndex].options.map((opt, i) => (
-                      <button
-                        key={i}
-                        className="in-card-btn"
-                        onClick={handleSombraAnswer}
-                      >
-                        {opt}
-                      </button>
-                    ))}
+                    {sombraItems[sombraIndex].options.map((opt, i) => {
+                      // Lógica de colores para sombras
+                      let btnClass = "in-card-btn";
+                      if (selectedSombraOption !== null) {
+                        if (i === sombraItems[sombraIndex].correct)
+                          btnClass += " correct-answer";
+                        else if (i === selectedSombraOption)
+                          btnClass += " wrong-answer";
+                      }
+
+                      return (
+                        <button
+                          key={i}
+                          className={btnClass}
+                          onClick={() => handleSombraAnswer(i)}
+                          disabled={selectedSombraOption !== null}
+                        >
+                          {opt}
+                        </button>
+                      );
+                    })}
                   </div>
+
+                  {/* Botón continuar centrado */}
+                  {selectedSombraOption !== null && (
+                    <div className="continue-container">
+                      <button
+                        className="jugar-btn continue-btn"
+                        onClick={handleSombraContinue}
+                      >
+                        Continuar
+                      </button>
+                    </div>
+                  )}
                 </>
               ) : (
                 <>

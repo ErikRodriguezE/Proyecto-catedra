@@ -1,17 +1,16 @@
 import {
   Bookmark,
-  X, // Para "close"
-  Gamepad2, // Para "game"
+  X,
+  Gamepad2,
   Heart,
-  CircleHelp, // Para "help"
+  CircleHelp,
   Home,
   Menu,
   Plus,
   Search,
-  Sparkles, // Para "spark"
+  Sparkles,
 } from "lucide-react";
 
-// Este diccionario conecta tu texto con el componente del ícono de Lucide
 const iconMap = {
   bookmark: Bookmark,
   close: X,
@@ -25,12 +24,27 @@ const iconMap = {
   spark: Sparkles,
 };
 
-// Componente que renderiza el ícono dinámicamente
-export function Icon({ name, size = 24, color = "currentColor", className }) {
+// 1. Agregamos 'fill = "none"' en los parámetros
+export function Icon({
+  name,
+  size = 24,
+  color = "currentColor",
+  fill = "none",
+  className,
+  ...props
+}) {
   const IconComponent = iconMap[name];
 
-  // Si le pasas un nombre que no existe en el diccionario, no renderiza nada para no romper la app
   if (!IconComponent) return null;
 
-  return <IconComponent size={size} color={color} className={className} />;
+  // 2. Le pasamos 'fill={fill}' al componente final de Lucide
+  return (
+    <IconComponent
+      size={size}
+      color={color}
+      fill={fill} /* <-- ESTA ES LA LÍNEA MÁGICA QUE PINTA EL INTERIOR */
+      className={className}
+      {...props}
+    />
+  );
 }

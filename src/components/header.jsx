@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Icon } from "./Icons";
 
-export function Header() {
+export function Header({ onOpenCreate }) {
   const location = useLocation();
 
   return (
@@ -26,7 +26,7 @@ export function Header() {
               <Icon name="search" size={16} className="search-icon" />
               <input type="text" placeholder="Buscar historias" />
             </div>
-            <button className="add-btn">
+            <button className="add-btn" onClick={onOpenCreate}>
               <span className="plus-icon-bg">
                 <Icon name="plus" size={16} />
               </span>
