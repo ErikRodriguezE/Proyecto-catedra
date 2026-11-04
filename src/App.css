@@ -38,7 +38,7 @@ html, body {
   gap: 30px;
 }
 
-.navbar.expandido ~  {
+.navbar.expandido ~ .main-content {
   margin-left: 250px;
 }
 
